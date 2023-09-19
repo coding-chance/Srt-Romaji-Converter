@@ -14,7 +14,6 @@ input_srtname = file_names[0]
 
 # Extract text data from srt file
 subs = pysrt.open(f"input/{input_srtname}")
-# print(subs)
 jp_texts = []
 for sub in subs:
     jp_texts.append(sub.text)
@@ -38,13 +37,11 @@ for phonetic in romaji_wordlist:
     # Check if phonetic needs to be converted and convert phonetics
     if phonetic.find('i') != -1 or phonetic.find('e') != -1 or phonetic.find('ch') != -1 or phonetic.find('r') != -1:
         replaced_phonetic = phonetic.replace("i", "ï").replace("e", "é").replace("ch", "tch").replace("r", "l")
-        # print(f"Phonetic replaced: {phonetic} -> {replaced_phonetic}")
     complete_phonetics.append(replaced_phonetic)
 
 outputs = []
 for index, line in enumerate(subtitle_lines):
     if index == 2 or index % 4 == 2 and index > 2:
-        # print(f"index({index})の剰余演算: {index%4} ({complete_phonetics[0]})")
         outputs.append(f"{complete_phonetics[0]}\n")
         complete_phonetics.pop(0)
     else:
