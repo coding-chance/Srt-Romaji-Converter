@@ -48,6 +48,6 @@ for index, line in enumerate(subtitle_lines):
         outputs.append(line)
 f.close()
 
-# ファイルを srt 形式で出力
+# Save file as srt
 with open(f'output/romaji-{input_srtname.split(".")[0]}-{formatted_time}.srt', 'x') as f:
     f.writelines(outputs)
