@@ -33,7 +33,6 @@ romaji_converter.use_foreign_spelling = False
 
 romaji_wordlist = []
 for jp_word in jp_texts:
-    # romaji = kks.convert(jp_word)[0]['hepburn']
     romaji = romaji_converter.romaji(jp_word)
     romaji_wordlist.append(romaji)
 
