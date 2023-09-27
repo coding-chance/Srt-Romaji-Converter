@@ -44,7 +44,7 @@ for phonetic in romaji_wordlist:
     replaced_phonetic = phonetic
     # Check if phonetic needs to be converted and convert phonetics
     if phonetic.find('i') != -1 or phonetic.find('e') != -1 or phonetic.find('ch') != -1 or phonetic.find('r') != -1:
-        replaced_phonetic = phonetic.replace("i", "ï").replace("e", "é").replace("ch", "tch").replace("r", "l")
+        replaced_phonetic = phonetic.replace("watakushi", "watashi").replace("Nippon", "Nihon").replace("i", "ï").replace("I", "Ï").replace("e", "é").replace("E", "É").replace("ch", "tch").replace("Ch", "Tch").replace("r", "l").replace("R", "L")
     complete_phonetics.append(replaced_phonetic)
 
 # Display original sentences and romaji
