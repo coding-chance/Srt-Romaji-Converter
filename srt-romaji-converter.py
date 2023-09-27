@@ -14,7 +14,6 @@ input_srtname = ""
 for file in os.listdir(input_dir):
     if not file.startswith('.') and os.path.isfile(os.path.join(input_dir, file)):
         input_srtname = file
-        # print(input_srtname)
 
 
 # Extract text data from srt file
@@ -49,8 +48,7 @@ for phonetic in romaji_wordlist:
 # Display original sentences and romaji
 for index, phonetic in enumerate(complete_phonetics):
     print(f"{jp_texts[index]}")
-    print(f"{phonetic}")
-    print()
+    print(f"{phonetic}\n")
     
 
 # Put together original text and romaji as srt format
@@ -71,3 +69,5 @@ f.close()
 # Save file as srt
 with open(f'output/romaji-{input_srtname.split(".")[0]}-{formatted_time}.srt', 'x') as f:
     f.writelines(outputs)
+
+print(f"Conversion completed.\n -> File Name: romaji-{input_srtname.split('.')[0]}-{formatted_time}.srt\n")
