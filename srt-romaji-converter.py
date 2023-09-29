@@ -3,27 +3,40 @@ import os
 import sys
 import datetime
 import cutlet
+import argparse
+from os.path import expanduser
 
 dt_now = datetime.datetime.now()
 formatted_time = dt_now.strftime('%Y%m%d_%H%M%S')
 
-# Get file name of srt file (ignore files starting with "." like ".DS_Store")
-input_dir = "input"
-file_names = os.listdir(input_dir)
-input_srtname = ""
-for file in os.listdir(input_dir):
-    if not file.startswith('.') and os.path.isfile(os.path.join(input_dir, file)):
-        input_srtname = file
-
+# Accept flag
+parser = argparse.ArgumentParser(description='Process command line arguments.')
+parser.add_argument('-i', '--input', nargs = '*', help='input file path')
+args = parser.parse_args()
+home_dir = expanduser("~")
+if args.input:
+    input_dir_list = args.input[0].split("/")
+    input_srtname = input_dir_list.pop()
+    input_dir = "/".join(input_dir_list)
+    print(f"input_dir: {input_dir}")
+    print(f"argument input was found \n -> inputdir: {input_dir}\n -> input_srtname: {input_srtname}")
+else:
+    input_dir = f"{home_dir}/Tools/srt-romaji-converter/input"
+    # Get file name of srt file (ignore files starting with "." like ".DS_Store")
+    file_names = os.listdir(input_dir)
+    for file in os.listdir(input_dir):
+        if not file.startswith('.') and os.path.isfile(os.path.join(input_dir, file)):
+            input_srtname = file
+    print(f"argument input wasn't found\n -> input_dir: {input_dir}\n -> input_srtname: {input_srtname}")
 
 # Extract text data from srt file
-subs = pysrt.open(f"input/{input_srtname}")
+subs = pysrt.open(f"{input_dir}/{input_srtname}")
 jp_texts = []
 for sub in subs:
     jp_texts.append(sub.text)
 
 # Extract text from txt file
-f = open(f"input/{input_srtname}", 'r')
+f = open(f"{input_dir}/{input_srtname}", 'r')
 subtitle_lines = f.readlines()
 
 # Convert jp_texts to romaji
@@ -42,7 +55,7 @@ for phonetic in romaji_wordlist:
     replaced_phonetic = phonetic
     # Check if phonetic needs to be converted and convert phonetics
     if phonetic.find('i') != -1 or phonetic.find('e') != -1 or phonetic.find('ch') != -1 or phonetic.find('r') != -1:
-        replaced_phonetic = phonetic.replace("watakushi", "watashi").replace("Nippon", "Nihon").replace("i", "ï").replace("I", "Ï").replace("e", "é").replace("E", "É").replace("ch", "tch").replace("Ch", "Tch").replace("r", "l").replace("R", "L")
+        replaced_phonetic = phonetic.replace("watakushi", "watashï").replace("Watakushi", "Watashï").replace("Nippon", "Nihon").replace("i", "ï").replace("I", "Ï").replace("e", "é").replace("E", "É").replace("ch", "tch").replace("Ch", "Tch").replace("r", "l").replace("R", "L")
     complete_phonetics.append(replaced_phonetic)
 
 # Display original sentences and romaji
@@ -67,7 +80,7 @@ f.close()
 
 
 # Save file as srt
-with open(f'output/romaji-{input_srtname.split(".")[0]}-{formatted_time}.srt', 'x') as f:
+with open(f'{home_dir}/Tools/srt-romaji-converter/output/romaji-{input_srtname.split(".")[0]}-{formatted_time}.srt', 'x') as f:
     f.writelines(outputs)
 
 print(f"Conversion completed.\n -> File Name: romaji-{input_srtname.split('.')[0]}-{formatted_time}.srt\n")
