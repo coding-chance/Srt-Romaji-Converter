@@ -3,11 +3,11 @@ This python script converts Japanse subtitle file (srt) into romaji (phonetics w
 Please utilize this script when you need to check the pronounciation of Japanese text.
 The generated romaji subtitle file is useful especially for those who haven't mastered Japanese characters.
 
-<br>
+
 
 ![demo-gif](https://github.com/coding-chance/Srt-Romaji-Converter/blob/master/image/romaji-srt-converter.gif?raw=true)
 
-<br>
+
 
 ## Prerequisites
 To run this script, `Python` needs to be installed on your computer.
