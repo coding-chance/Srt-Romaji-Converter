@@ -5,7 +5,7 @@ The generated romaji subtitle file is useful especially for those who haven't ma
 
 <br>
 
-![demo-gif](https://github.com/coding-chance/Wanna-Basket/blob/master/image/romaji-srt-converter.gif?raw=true)
+![demo-gif](https://github.com/coding-chance/Srt-Romaji-Converter/blob/master/image/romaji-srt-converter.gif?raw=true)
 
 <br>
 
