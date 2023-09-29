@@ -5,6 +5,10 @@ The generated romaji subtitle file is useful especially for those who haven't ma
 
 <br>
 
+![demo-gif](https://github.com/coding-chance/Wanna-Basket/blob/master/image/romaji-srt-converter.gif?raw=true)
+
+<br>
+
 ## Prerequisites
 To run this script, `Python` needs to be installed on your computer.
 If you have not already installed `Python` on your computer, please visit [Doanload Page (Python Official Website)](https://www.python.org/downloads/) to downlaod `Python` for your own computer operating system.
