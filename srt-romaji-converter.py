@@ -9,6 +9,8 @@ from os.path import expanduser
 dt_now = datetime.datetime.now()
 formatted_time = dt_now.strftime('%Y%m%d_%H%M%S')
 
+print("Process started.")
+print("\n------------------------------------------------\n")
 
 # Accept flag
 parser = argparse.ArgumentParser(description='Process command line arguments.')
@@ -20,8 +22,6 @@ if args.input:
     input_dir_list = args.input[0].split("/")
     input_srtname = input_dir_list.pop()
     input_dir = "/".join(input_dir_list)
-    print(f"input_dir: {input_dir}")
-    print(f"argument input was found \n -> inputdir: {input_dir}\n -> input_srtname: {input_srtname}")
 else:
     input_dir = f"{project_root_dir}/input"
     # Get file name of srt file (ignore files starting with "." like ".DS_Store")
@@ -29,7 +29,6 @@ else:
     for file in os.listdir(input_dir):
         if not file.startswith('.') and os.path.isfile(os.path.join(input_dir, file)):
             input_srtname = file
-    print(f"argument input wasn't found\n -> input_dir: {input_dir}\n -> input_srtname: {input_srtname}")
 
 # Extract text data from srt file
 subs = pysrt.open(f"{input_dir}/{input_srtname}")
@@ -87,4 +86,5 @@ with open(output_file_path, 'x') as f:
     f.writelines(outputs)
 
 # Show generated file location
-print(f"Romaji conversion process completed. Open the file at\n\n{output_file_path}\n")
+print("------------------------------------------------\n")
+print(f"Romaji conversion process completed.\n -> {output_file_path}\n")
