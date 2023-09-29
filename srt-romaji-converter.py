@@ -9,11 +9,13 @@ from os.path import expanduser
 dt_now = datetime.datetime.now()
 formatted_time = dt_now.strftime('%Y%m%d_%H%M%S')
 
+
 # Accept flag
 parser = argparse.ArgumentParser(description='Process command line arguments.')
 parser.add_argument('-i', '--input', nargs = '*', help='input file path')
 args = parser.parse_args()
 home_dir = expanduser("~")
+project_root_dir = os.path.dirname(os.path.realpath(__file__))
 if args.input:
     input_dir_list = args.input[0].split("/")
     input_srtname = input_dir_list.pop()
@@ -21,7 +23,7 @@ if args.input:
     print(f"input_dir: {input_dir}")
     print(f"argument input was found \n -> inputdir: {input_dir}\n -> input_srtname: {input_srtname}")
 else:
-    input_dir = f"{home_dir}/Tools/srt-romaji-converter/input"
+    input_dir = f"{project_root_dir}/input"
     # Get file name of srt file (ignore files starting with "." like ".DS_Store")
     file_names = os.listdir(input_dir)
     for file in os.listdir(input_dir):
@@ -80,7 +82,9 @@ f.close()
 
 
 # Save file as srt
-with open(f'{home_dir}/Tools/srt-romaji-converter/output/romaji-{input_srtname.split(".")[0]}-{formatted_time}.srt', 'x') as f:
+output_file_path = f'{project_root_dir}/output/romaji-{input_srtname.split(".")[0]}-{formatted_time}.srt'
+with open(output_file_path, 'x') as f:
     f.writelines(outputs)
 
-print(f"Conversion completed.\n -> File Name: romaji-{input_srtname.split('.')[0]}-{formatted_time}.srt\n")
+# Show generated file location
+print(f"Romaji conversion process completed. Open the file at\n\n{output_file_path}\n")
