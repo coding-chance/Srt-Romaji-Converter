@@ -2,20 +2,19 @@
 This python script converts Japanse subtitle file (srt) into romaji (phonetics with alphabet).
 Please utilize this script when you need to check the pronounciation of Japanese text.
 The generated romaji subtitle file is useful especially for those who haven't mastered Japanese characters.
-
-<br>
+A video player called [Knowclip](https://www.knowclip.com) can display both Japanese subtitle and romaji subtitle while playing a vide. This is highly recommended for Japanese learners.
 
 ![demo-gif](https://github.com/coding-chance/Srt-Romaji-Converter/blob/master/image/romaji-srt-converter.gif?raw=true)
 
-<br>
+
 
 ## Prerequisites
 To run this script, `Python` needs to be installed on your computer.
-If you have not already installed `Python` on your computer, please visit [Doanload Page (Python Official Website)](https://www.python.org/downloads/) to downlaod `Python` for your own computer operating system.
+If you have not already installed `Python` on your computer, please visit [Download Page (Python Official Website)](https://www.python.org/downloads/) to downlaod `Python` for your own computer operating system.
 
 <br>
 
-## Installation & setup
+## Installation & Setup
 
 1. Click green `Code` button on this page (github) and click on `Donwload ZIP`
 2. Place the downloaded zip file to where you want to save the file, and unzip it
@@ -27,7 +26,7 @@ If you have not already installed `Python` on your computer, please visit [Doanl
 If `git` is installed on your computer, you can install it as follows
 1. Open command line tool (terminal)
 2. Navigate to the directory where you want to save the script
-3. Run `git clone https://github.com/coding-chance/Easy-Japanese-Extractor`
+3. Run `git clone https://github.com/coding-chance/Srt-Romaji-Converter.git`
 4. Run `pip install -r requirements.txt`
 
 <br>
